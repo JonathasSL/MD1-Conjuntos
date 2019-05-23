@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.StringTokenizer;
@@ -8,19 +7,15 @@ public class Conjunto {
 	private String nome;
 	//String recebida como conjunto
 	private String strConjunto;
-	
+
 	//Conjunto separado em lista
-	private ArrayList<String> el;
 	private Set<String> elementos;
-	
+
 	public Conjunto(String conjunto) {
 		setStrConjunto(conjunto);
 		setElementos(conjunto.replaceAll(" ", ""));
-		//Testes
-//		System.out.println("strConjunto: "+strConjunto);
-//		System.out.println("elementos: "+elementos);
 	}
-	
+
 	/**
 	 * @param metodo privado que transforma a string recebida numa lista que armazena os elementos
 	 */
@@ -30,58 +25,52 @@ public class Conjunto {
 		//separa a string pela igualdade
 		StringTokenizer st = new StringTokenizer(conjunto,"=");
 		String token;
-		// 
-		boolean chave;
 		//itera pelos lados da(s) igualdade(s)
 		for(int i=0 ; i<= st.countTokens() ; i++) {
 			token = st.nextToken();
-			//verifica se esse lado da igualdade é a representacao de um conjunto
+			//verifica se esse lado da igualdade e a representacao de um conjunto
 			if(token.contains("{")) {
 				//elimina os espacos da string
 				token = token.replaceAll(" ", "");
-				String add,sub = null;
+				String add,sub;
 				//percorre cada caracter da string
-				for(int t=1 ; t<token.length() ; t++) {
+				for(int p=1 ; p<token.length() ; p++) {
 					add = null;
-					if(!"{".equals(String.valueOf(token.charAt(t))) && !",".equals(String.valueOf(token.charAt(t))) && !"}".equals(String.valueOf(token.charAt(t)))) {
-						
+					System.out.println(token.substring(p));
+					if(!"{".equals(String.valueOf(token.charAt(p))) 
+							&& !",".equals(String.valueOf(token.charAt(p))) 
+							&& !"}".equals(String.valueOf(token.charAt(p)))) {
 						int euristica = Integer.MAX_VALUE;
-						sub = token.substring(t);
+						sub = token.substring(p);
 						int virg = sub.indexOf(",")<0?euristica:sub.indexOf(",");
 						int chav = sub.indexOf("}")<0?euristica:sub.indexOf("}");
 						add = virg<chav? sub.substring(0, virg):sub.substring(0, chav);
-
-						System.out.println(add);
 						elementos.add(add);
-					}else
+					}else {
+						System.out.println("else");
 						//Checa se elemento na posicao t e um subconjunto
-						if("{".equals(token.charAt(t))) {
-							add = token.substring(t-1, token.substring(t).indexOf("}"));
+						if("{".equals(String.valueOf(token.charAt(p)))) {
+							//adiciona o subConjunto inteiro como um elementos
+							add = token.substring(p, token.indexOf("}")+1);
 							elementos.add(add);
-							
-
-							System.out.println(add);
-							
 							//Pula o subconjunto
-//							System.out.println(t);
-							t += token.substring(t).indexOf("}") - t;
-//							System.out.println(t);
+							p += token.indexOf("}") - p;
 						}
+					}
 				}
-			}else
+			}else //se o lado da igualdade for o nome do conjunto
 				setNome(token);
 		}
-		this.elementos =null;
 	}
 
-	
-	
+
+
 
 	@Override
 	public String toString() {
-		return "Conjunto: " + nome + " = " + elementos ;
+		return "Conjunto: " + nome + " = " + elementos.toString().replace("[", "{").replace("]", "}") ;
 	}
-	
+
 
 	/**
 	 * @return the nome
