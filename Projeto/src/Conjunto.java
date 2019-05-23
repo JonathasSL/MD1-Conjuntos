@@ -2,14 +2,17 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class Conjunto {
+	//String recebida como conjunto
 	private String strConjunto;
+	//Conjunto separado em lista
 	private ArrayList<String> elementos;
 	
 	public Conjunto(String conjunto) {
 		setStrConjunto(conjunto);
 		setElementos(conjunto);
-		System.out.println("strConjunto = "+strConjunto);
-		System.out.println("elementos = "+elementos);
+		//Testes
+		System.out.println("strConjunto: "+strConjunto);
+		System.out.println("elementos: "+elementos);
 	}
 
 	/**
@@ -40,16 +43,34 @@ public class Conjunto {
 		//separa a string pela igualdade
 		StringTokenizer st = new StringTokenizer(conjunto,"=");
 		String token;
+		// 
+		boolean chave;
 		//itera pelos lados da(s) igualdade(s)
-		for(int i=0 ; i< st.countTokens() ; i++) {
+		for(int i=0 ; i<= st.countTokens() ; i++) {
 			token = st.nextToken();
+			//elimina os espacos da string
+			token.replaceAll(" ", "");
+			System.out.println("token: "+token);
 			//verifica se esse lado da igualdade é a representacao de um conjunto
 			if(token.contains("{")) {
-				//elimina os espacos
-				token.replaceAll(" ", "");
+				String add = null;
 				//percorre cada caracter da string
-				for(int t=0 ; t<token.length() ; i++) {
-					
+				for(int t=0 ; t<=token.length() ; t++) {
+					if(!"{".equals(token.charAt(i)) && !",".equals(token.charAt(i))) {
+						int euristica = Integer.MAX_VALUE;
+						String sub = token.substring(i);
+						add = sub.
+						
+						
+						
+						
+//						elementos.add();
+					}else
+						if("{".equals(token.charAt(i))) {
+							add = token.substring(i, token.substring(i).indexOf("}"));
+//							elementos.add(token.substring(i, token.substring(i).indexOf("}")));
+						}
+					System.out.println(add);
 				}
 			}
 		}
