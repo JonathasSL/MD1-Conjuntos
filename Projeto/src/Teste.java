@@ -2,9 +2,9 @@
 public class Teste {
 
 	public static void main(String[] args) {
-		String s = "A = {1,2,  3,{1,2},4}";
+		String s = "A = {1,2,  3,{1, 2},4}";
 //		s = s.replaceAll(" ", "");
-//		System.out.println(s);
+		System.out.println(s);
 //		Conjunto a = ;
 		System.out.println(new Conjunto(s));
 //		System.out.println(s.indexOf("4"));
