@@ -5,7 +5,7 @@ import java.util.Set;
 public class Universo {
 	//Classe para manipulacao dos conjuntos
 	private ArrayList<Conjunto> subConjuntos;
-	//Elementos que nao estao dentro de nenhum sub conjunto
+	//Elementos que nao estao dentro de nenhum subConjunto
 	private Conjunto universo;
 	//Todos os elementos do universo
 	private Conjunto all;
@@ -30,25 +30,36 @@ public class Universo {
 		subConjuntos.add(conjunto);
 	}
 	
-	public void getUniao() {
-		setUniao();
-		return;
+	public Conjunto getUniverso(ArrayList<String> nomes) {
+		setUniversoCompleto();
+		return all;
 	}
-	private void setUniao() {
+	
+	private void setUniversoCompleto() {
 		Set<String> s = new HashSet<>();
 		Conjunto aux;
+		all = new Conjunto();
+		all.setNome("Universo");
+		
 		for (int i = 0 ; i<subConjuntos.size() ; i++) {
 			aux = subConjuntos.get(i);
 			for(int e = 0 ; e < aux.getCardinalidade() ; e++) {
-				
+				all.addElemento(aux.getElemento(e));
 			}
 		}
+//		all = new Conjunto(setToConjunto());
+	}
+	
+	
+	
+	private void setToConjunto() {
+		
 	}
 
 	/**
 	 * @return the universo
 	 */
-	public Conjunto getUniverso() {
+ 	public Conjunto getUniverso() {
 		return universo;
 	}
 

@@ -6,7 +6,6 @@ public class Teste {
 		System.out.println(s+"\n");
 		Conjunto c = new Conjunto(s);
 		System.out.println(c+"\n");
-		System.out.println(c.getElemento(3));
 	}
 
 }
