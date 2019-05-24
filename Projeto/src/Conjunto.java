@@ -36,7 +36,6 @@ public class Conjunto {
 				//percorre cada caracter da string
 				for(int p=1 ; p<token.length() ; p++) {
 					add = null;
-					System.out.println(token.substring(p));
 					if(!"{".equals(String.valueOf(token.charAt(p))) 
 							&& !",".equals(String.valueOf(token.charAt(p))) 
 							&& !"}".equals(String.valueOf(token.charAt(p)))) {
@@ -47,7 +46,6 @@ public class Conjunto {
 						add = virg<chav? sub.substring(0, virg):sub.substring(0, chav);
 						elementos.add(add);
 					}else {
-						System.out.println("else");
 						//Checa se elemento na posicao t e um subconjunto
 						if("{".equals(String.valueOf(token.charAt(p)))) {
 							//adiciona o subConjunto inteiro como um elementos
