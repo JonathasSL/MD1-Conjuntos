@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.StringTokenizer;
 
@@ -7,7 +8,6 @@ public class Conjunto {
 	private String nome;
 	//String recebida como conjunto
 	private String strConjunto;
-
 	//Conjunto separado em lista
 	private Set<String> elementos;
 
@@ -61,6 +61,16 @@ public class Conjunto {
 		}
 	}
 
+	public String getElemento(int i) {
+		Iterator<String> it = elementos.iterator();
+		int aux =0;
+		String elemento = null;
+		while(it.hasNext() && aux <= i) {
+			elemento = it.next();
+			aux++;
+		}
+		return elemento;
+	}
 	public int getCardinalidade() {
 		return elementos.size();
 	}
@@ -69,12 +79,10 @@ public class Conjunto {
 		return "|"+nome+"| = "+ getCardinalidade();
 	}
 
-
 	@Override
 	public String toString() {
 		return "Conjunto: " + nome + " = " + elementos.toString().replace("[", "{").replace("]", "}") ;
 	}
-
 
 	/**
 	 * @return the nome
@@ -83,14 +91,12 @@ public class Conjunto {
 		return nome;
 	}
 
-
 	/**
 	 * @param nome the nome to set
 	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	/**
 	 * @return the strConjunto
