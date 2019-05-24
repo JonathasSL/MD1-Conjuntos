@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ControllerCadConjunto">
+    <children>
+        <TextField fx:id="campo" layoutX="226.0" layoutY="175.0" promptText="Conjunto" />
+        <Button layoutX="277.0" layoutY="341.0" mnemonicParsing="false" onAction="#goToInicio" text="Voltar" />
+        <Label layoutX="254.0" layoutY="127.0" text="Digite o conjunto" />
+        <Button layoutX="226.0" layoutY="223.0" mnemonicParsing="false" onAction="#addElemento" text="Cadastrar" />
+      <Button layoutX="308.0" layoutY="223.0" mnemonicParsing="false" onAction="#finalizeCadastro" prefHeight="25.0" prefWidth="67.0" text="Finalizar" />
+    </children>
+</AnchorPane>
