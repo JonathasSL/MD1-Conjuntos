@@ -85,5 +85,37 @@ public class Universo {
 		this.all = conjunto;
 	}
 	
+	public void uniao(ArrayList<String> conjuntosDigitados) {//Recebe uma lista contendo os nomes dos conjuntos que foram inseridos pelo usuário
+		Set<String> conjuntoSemRepeticao = new HashSet<>();
+		//		Conjunto uniao = new Conjunto();
+		//		uniao.setNome("Uniao");
+		for (int i = 0; i < conjuntosDigitados.size(); i ++) {//Percorre todas as posições do conjunto digitado
+			for (int j = 0; j < subConjuntos.size(); j ++) {//Para cada posição do conjunto digitado, todas as posições do conjunto universo são acessadas
+				Conjunto aux = subConjuntos.get(j);//aux recebe os valores do conjunto universo que estão naquela posição
+				if (conjuntosDigitados.get(i).equalsIgnoreCase(aux.getNome())) {//Verifica se o nome do conjunto é igual ao nome do sub conjunto do conjunto universo
+					for (int k = 0; k < aux.getCardinalidade(); k ++) {//Verifica a cardinalidade (número de elementos) de aux, e executa o "for". Cada iteração representa um desses elementos da cardinalidade;
+						conjuntoSemRepeticao.add(aux.getElemento(k));//Adiciona em "conjuntoSemRepeticao" o elemento de aux naquela posição
+						//						uniao.addElemento(aux.getElemento(k));
+					}
+				}
+			}	
+		}
+		Iterator <String> it = conjuntoSemRepeticao.iterator();
+		String elemento = null;
+		while (it.hasNext()) {
+			elemento = it.next();
+			System.out.println(elemento);
+		}
+	}
+
+//	public void pertinencia() {
+//		setUniao();
+//		for (int j = 0; j < all.getCardinalidade(); j ++) {
+//			for (int i = 0; i < subConjuntos.size(); i ++) {
+//				if (subConjuntos.get(i).contains(all.getElemento(j)))
+//					System.out.println(subConjuntos.get(i).getElemento(i));
+//			}
+//		}
+//	}
 
 }
