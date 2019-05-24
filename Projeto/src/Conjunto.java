@@ -15,6 +15,10 @@ public class Conjunto {
 		setStrConjunto(conjunto);
 		setElementos(conjunto.replaceAll(" ", ""));
 	}
+	
+	public Conjunto() {
+		
+	}
 
 	/**
 	 * @param metodo privado que transforma a string recebida numa lista que armazena os elementos
@@ -63,7 +67,7 @@ public class Conjunto {
 
 	public String getElemento(int i) {
 		Iterator<String> it = elementos.iterator();
-		int aux =0;
+		int aux = 0;
 		String elemento = null;
 		while(it.hasNext() && aux <= i) {
 			elemento = it.next();
@@ -71,8 +75,13 @@ public class Conjunto {
 		}
 		return elemento;
 	}
+	
 	public int getCardinalidade() {
 		return elementos.size();
+	}
+
+	public void addElemento(String elemento) {
+		elementos.add(elemento);
 	}
 	
 	public String getStringCardinalidade() {
@@ -118,4 +127,6 @@ public class Conjunto {
 	public Set<String> getElementos() {
 		return elementos;
 	}
+
+	
 }
