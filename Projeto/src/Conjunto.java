@@ -61,7 +61,13 @@ public class Conjunto {
 		}
 	}
 
+	public int getCardinalidade() {
+		return elementos.size();
+	}
 	
+	public String getStringCardinalidade() {
+		return "|"+nome+"| = "+ getCardinalidade();
+	}
 
 
 	@Override
