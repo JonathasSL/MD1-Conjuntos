@@ -88,6 +88,13 @@ public class Conjunto {
 		return "|"+nome+"| = "+ getCardinalidade();
 	}
 
+	public boolean contains(String elemento) {
+		boolean achou = false;
+		for(int i=0 ; i<getCardinalidade() && !achou; i++)
+			achou = getElemento(i).equalsIgnoreCase(elemento)?true:false;
+		return achou;
+	}
+
 	@Override
 	public String toString() {
 		return "Conjunto: " + nome + " = " + elementos.toString().replace("[", "{").replace("]", "}") ;
