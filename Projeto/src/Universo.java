@@ -47,20 +47,22 @@ public class Universo {
 				all.addElemento(aux.getElemento(e));
 			}
 		}
-//		all = new Conjunto(setToConjunto());
+//		System.out.println(all);
 	}
 	
 	
 	
-	private void setToConjunto() {
+	private Conjunto hashSetToConjunto(Set<String> conjunto) {
 		
+		return null;
 	}
 
 	/**
 	 * @return the universo
 	 */
  	public Conjunto getUniverso() {
-		return universo;
+ 		setUniversoCompleto();
+ 		return all;
 	}
 
 	/**

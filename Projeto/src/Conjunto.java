@@ -12,12 +12,13 @@ public class Conjunto {
 	private Set<String> elementos;
 
 	public Conjunto(String conjunto) {
+		elementos = new HashSet<>();
 		setStrConjunto(conjunto);
 		setElementos(conjunto.replaceAll(" ", ""));
 	}
 	
 	public Conjunto() {
-		
+		elementos = new HashSet<>();
 	}
 
 	/**
@@ -49,6 +50,7 @@ public class Conjunto {
 						int chav = sub.indexOf("}")<0?euristica:sub.indexOf("}");
 						add = virg<chav? sub.substring(0, virg):sub.substring(0, chav);
 						elementos.add(add);
+						p+=add.length()-1;
 					}else {
 						//Checa se elemento na posicao t e um subconjunto
 						if("{".equals(String.valueOf(token.charAt(p)))) {
