@@ -47,14 +47,13 @@ public class Universo {
 				all.addElemento(aux.getElemento(e));
 			}
 		}
-//		System.out.println(all);
+		for(int i=0;i<universo.getCardinalidade();i++) {
+			all.addElemento(universo.getElemento(i));
+		}
 	}
 	
-	
-	
-	private Conjunto hashSetToConjunto(Set<String> conjunto) {
-		
-		return null;
+	private Conjunto getConjuntoConjunto(Set<String> conjunto) {
+		return universo;
 	}
 
 	/**
@@ -71,7 +70,6 @@ public class Universo {
 	public void setUniverso(Conjunto universo) {
 		this.universo = universo;
 	}
-
 	
 	/**
 	 * @return the elementos
