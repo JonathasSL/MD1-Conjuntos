@@ -99,7 +99,7 @@ public class Conjunto {
 
 	@Override
 	public String toString() {
-		return "Conjunto: " + nome + " = " + elementos.toString().replace("[", "{").replace("]", "}") ;
+		return  nome + " = " + elementos.toString().replace("[", "{").replace("]", "}") ;
 	}
 
 	/**
