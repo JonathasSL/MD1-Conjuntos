@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Teste {
 
@@ -9,7 +10,12 @@ public class Teste {
 		u.addConjunto(a);
 		u.addConjunto(b);
 		u.addConjunto(texto);
-		System.out.println(u.getUniverso());
+		ArrayList<String> noms = new ArrayList<>();
+		noms.add("A");
+		noms.add("texto");
+		noms.add("B");
+		System.out.println(u.uniao(noms));
+//		u.uniao(noms);
 		
 		
 		
