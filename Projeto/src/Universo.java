@@ -89,10 +89,10 @@ public class Universo {
 		this.all = conjunto;
 	}
 	
-	public void uniao(ArrayList<String> conjuntosDigitados) {//Recebe uma lista contendo os nomes dos conjuntos que foram inseridos pelo usuário
+	public Conjunto uniao(ArrayList<String> conjuntosDigitados) {//Recebe uma lista contendo os nomes dos conjuntos que foram inseridos pelo usuário
 		Set<String> conjuntoSemRepeticao = new HashSet<>();
-				Conjunto uniao = new Conjunto("uniao = ");
-				uniao.setNome("Uniao");
+				Conjunto uniao = new Conjunto();
+				uniao.setNome(toString(conjuntosDigitados));
 		for (int i = 0; i < conjuntosDigitados.size(); i ++) {//Percorre todas as posições do conjunto digitado
 			for (int j = 0; j < subConjuntos.size(); j ++) {//Para cada posição do conjunto digitado, todas as posições do conjunto universo são acessadas
 				Conjunto aux = subConjuntos.get(j);//aux recebe os valores do conjunto universo que estão naquela posição
@@ -110,7 +110,8 @@ public class Universo {
 //			elemento = it.next();
 //			System.out.println(elemento);
 //		}
-		System.out.println(toString(conjuntosDigitados, conjuntoSemRepeticao));
+//		System.out.println(toString(conjuntosDigitados, conjuntoSemRepeticao));
+		return uniao;
 	}
 	
 	public void subtracao(Conjunto conjuntoA, Conjunto conjuntoB) {
@@ -130,11 +131,11 @@ public class Universo {
 		System.out.println(conjuntoA.getNome() + " - " + conjuntoB.getNome() + " = " + lista.toString());
 		}
 	
-	public String toString(ArrayList<String> conjuntosDigitados, Set<String> conjuntoSemRepeticao) {
+	public String toString(ArrayList<String> conjuntosDigitados/*, Set<String> conjuntoSemRepeticao*/) {
 		String uniao = null;//String que será utilizada para imprimir a união de todo o conjunto
 		for (int i = 0; i < conjuntosDigitados.size(); i ++) {//Faz "n" iterações. Uma para cada posição do "conjuntosDigitados"
 			if (i + 1 == conjuntosDigitados.size())//Verifica se a próxima posição será igual ao tamanho de "conjuntosDigitados". Se for, então quer dizer que a atual posição é a última
-				uniao += conjuntosDigitados.get(i) + " = " + conjuntoSemRepeticao;//Caso seja a última posição, é inserido o nome do último conjunto e a união completa. Por exemplo: "A U B U "(valor antigo) + "C = [1, 12, 34, 2, 3, 4, 18, 8, 9, {1,2}]"(novo valor) = A U B U C = [1, 12, 34, 2, 3, 4, 18, 8, 9, {1,2}] 
+				uniao += conjuntosDigitados.get(i) /*+ " = " + conjuntoSemRepeticao*/;//Caso seja a última posição, é inserido o nome do último conjunto e a união completa. Por exemplo: "A U B U "(valor antigo) + "C = [1, 12, 34, 2, 3, 4, 18, 8, 9, {1,2}]"(novo valor) = A U B U C = [1, 12, 34, 2, 3, 4, 18, 8, 9, {1,2}] 
 			else if (uniao == null)//Verifica se a variável está vazia
 				uniao = conjuntosDigitados.get(i) + " U ";//Se estiver vazia, a primeira String é adicionada. O resultado, por exemplo, seria: "A U " (A união com...)
 			else if (uniao != null)//Verifica se a variável já possui valores
