@@ -43,15 +43,92 @@ public class Universo {
 	
 	
 
-	public Conjunto Intersecao(Conjunto a, Conjunto b) {
+
+	
+	public static boolean contem(Conjunto a, Conjunto b) {
+		int cont=0;
 		
-		String teste = null;
-		String novoConjunto = "Interse��o de " + a.getNome() + " e " + b.getNome() +  "= {";
-		for(int i=0;i<a.getSize();i++) {
-			for(int j=0;j<b.getSize();j++) {
+		for(int i=0;i<b.getCardinalidade();i++) {
+				if(a.getElemento(i).contains(b.getElemento(i))) {
+					cont++;
+				}
+			
+		}
+		if(cont==a.getCardinalidade()) {
+			return true;
+		}
+		return false;
+		
+		
+	}
+	
+	public static void multiplicacao(Conjunto a, Conjunto b) {
+		HashSet elementos = new HashSet<>();
+		
+		String novoConjunto = a.getNome() + " x " + b.getNome() +  "= {";
+		for(int i=0;i<a.getCardinalidade();i++) {
+			for(int j=0;j<b.getCardinalidade();j++) {
+				novoConjunto = novoConjunto + "(" +  a.getElemento(i) + " ," + b.getElemento(j) + ")" + "," ;
+				elementos.add(novoConjunto);
+			}
+		}
+		System.out.println(novoConjunto);
+	}
+	
+	public static boolean maior(Conjunto a, Conjunto b) {
+//		String d = a.toString();
+//		if(a.toString().matches("^[0-9]*$")) {
+		int total1=0;
+		int total2=0;
+		for(int i=0;i<a.getCardinalidade();i++) {
+			if(a.getElemento(i).contains("{")) {
+					String[] texto = a.getElemento(i).split(",");
+					for(int w=0; w<texto.length;w++) {
+						texto[w] = texto[w].replace("{", "").replace("}", "");
+						total1 += Integer.parseInt(texto[w]);
+					}
+			}
+			else
+			total1 +=  Integer.parseInt(a.getElemento(i));
+		}
+		for(int j=0;j<b.getCardinalidade();j++) {
+			if(a.getElemento(j).contains("{")) {
+				String[] texto = a.getElemento(j).split(",");
+				System.out.println("TESTE: " + texto[0].replace("{", "") + "outro " + texto[1].replace("}", ""));
+				for(int w=0; w<texto.length;w++) {
+					texto[w] = texto[w].replace("{", "").replace("}", "");
+					total2 += Integer.parseInt(texto[w]);
+				}		
+			
+		}
+		else
+			total2 = total2 + Integer.parseInt(b.getElemento(j));	
+		}
+		if(total1>total2) {
+			System.out.println(a.getNome() + " é maior que " + b.getNome());
+			return true;
+		}
+		else {
+			System.out.println(a.getNome() + " é menor que " + b.getNome());
+			return false;}
+		
+//			System.out.println("Este conjunto é composto por elementos textos, tente outro conjunto.");
+//			return false;
+//		}
+	}
+	public static Conjunto Intersecao(Conjunto a, Conjunto b) {
+		
+		String intersecao = null;
+		String novoConjunto = "Interseção = {";
+		for(int i=0;i<a.getCardinalidade();i++) {
+			for(int j=0;j<b.getCardinalidade();j++) {
 				if(a.getElemento(i).contains(b.getElemento(j))) {
-					teste=a.getElemento(i);
-					novoConjunto = novoConjunto + teste+ " ," ;
+					intersecao=a.getElemento(i);
+					if(novoConjunto.contains(intersecao)) {
+						
+					}
+					else
+					novoConjunto = novoConjunto + intersecao + " ," ;
 				}
 			}
 		}
