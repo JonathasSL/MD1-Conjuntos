@@ -14,7 +14,7 @@ public class Teste {
 	public static void main(String[] args) {
 		Universo u = new Universo();
 		String s = "A = {1,2,3}";
-		String b = "B = {1,4,5,2,{1,2}}";// ESSE CONJUNTO FILHO DA PUTA
+		String b = "B = {1,4,5,2,{1,2}}";
 		String bla = "C = {Eu, Tu, Nos, Vos, {Eles, Elas}}";
 		Conjunto palavras = new Conjunto(bla);
 		Conjunto a = new Conjunto(s);
