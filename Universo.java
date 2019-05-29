@@ -75,9 +75,12 @@ public class Universo {
 		System.out.println(novoConjunto);
 	}
 	
+	
 	public static boolean maior(Conjunto a, Conjunto b) {
-//		String d = a.toString();
-//		if(a.toString().matches("^[0-9]*$")) {
+		String d = a.toString();
+		d= d.replace("{", "").replace("}", "").replace(":", "").replace("Conjunto", "").replace("=", "").replace(",", "").replace(" ", "");
+		 try {
+		Integer.valueOf(d);
 		int total1=0;
 		int total2=0;
 		for(int i=0;i<a.getCardinalidade();i++) {
@@ -111,11 +114,14 @@ public class Universo {
 		else {
 			System.out.println(a.getNome() + " é menor que " + b.getNome());
 			return false;}
-		
-//			System.out.println("Este conjunto é composto por elementos textos, tente outro conjunto.");
-//			return false;
-//		}
+		 } catch (Exception e) {
+		        System.out.println("Este conjunto é composto por elementos textos, tente outro conjunto.");
+		    }
+
+		return false;
 	}
+	
+	
 	public static Conjunto Intersecao(Conjunto a, Conjunto b) {
 		
 		String intersecao = null;
