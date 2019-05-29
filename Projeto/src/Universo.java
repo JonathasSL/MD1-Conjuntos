@@ -22,14 +22,17 @@ public class Universo {
 		subConjuntos.add(conjunto);
 	}
 	
+	//Adiciona um novo subconjunto ao universo pela sua representacao em String
 	public void addConjunto(String conjunto) {
 		subConjuntos.add(new Conjunto(conjunto));
 	}
 	
+	//Adiciona um novo subconjunto
 	public void addConjunto(Conjunto conjunto) {
 		subConjuntos.add(conjunto);
 	}
 	
+	//Retorna a uniao do universo e todos seus subconjuntos
 	public Conjunto getUniverso(ArrayList<String> nomes) {
 		setUniversoCompleto();
 		return all;
@@ -47,9 +50,10 @@ public class Universo {
 				all.addElemento(aux.getElemento(e));
 			}
 		}
-		for(int i=0;i<universo.getCardinalidade();i++) {
-			all.addElemento(universo.getElemento(i));
-		}
+		if(universo!=null)
+			for(int i=0;i<universo.getCardinalidade();i++) {
+				all.addElemento(universo.getElemento(i));
+			}
 	}
 	
 	private Conjunto getConjuntoConjunto(Set<String> conjunto) {

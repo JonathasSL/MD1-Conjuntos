@@ -11,12 +11,14 @@ public class Conjunto {
 	//Conjunto separado em lista
 	private Set<String> elementos;
 
+	//Cria um conjunto com nome e elementos ja determinados Ex: "A = {1,2,  3,{1, 2},4}"
 	public Conjunto(String conjunto) {
 		elementos = new HashSet<>();
 		setStrConjunto(conjunto);
 		setElementos(conjunto.replaceAll(" ", ""));
 	}
 	
+	//Cria um conjunto sem elementos e sem nome
 	public Conjunto() {
 		elementos = new HashSet<>();
 	}
@@ -66,7 +68,8 @@ public class Conjunto {
 				setNome(token);
 		}
 	}
-
+	
+	//Retorna o elemento na posicao i do conjunto
 	public String getElemento(int i) {
 		Iterator<String> it = elementos.iterator();
 		int aux = 0;
@@ -78,18 +81,22 @@ public class Conjunto {
 		return elemento;
 	}
 	
+	//Retorna a cardinalidade do conjunto
 	public int getCardinalidade() {
 		return elementos.size();
 	}
 
+	//Adiciona um unico elemento ao conjunto
 	public void addElemento(String elemento) {
 		elementos.add(elemento);
 	}
 	
+	//Retorna uma String com o nome do conjunto
 	public String getStringCardinalidade() {
 		return "|"+nome+"| = "+ getCardinalidade();
 	}
 
+	//Testa se um elemento existe no conjunto
 	public boolean contains(String elemento) {
 		boolean achou = false;
 		for(int i=0 ; i<getCardinalidade() && !achou; i++)
@@ -97,6 +104,7 @@ public class Conjunto {
 		return achou;
 	}
 
+	//Retorna uma string com o nome e a representacao do conjunto
 	@Override
 	public String toString() {
 		return  nome + " = " + elementos.toString().replace("[", "{").replace("]", "}") ;
