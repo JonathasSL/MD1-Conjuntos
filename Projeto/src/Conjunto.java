@@ -42,7 +42,7 @@ public class Conjunto {
 				String add,sub;
 				//percorre cada caracter da string
 				for(int p=1 ; p<token.length() ; p++) {
-					add = null;
+					add = token.substring(p);
 					if(!"{".equals(String.valueOf(token.charAt(p))) 
 							&& !",".equals(String.valueOf(token.charAt(p))) 
 							&& !"}".equals(String.valueOf(token.charAt(p)))) {
@@ -57,10 +57,11 @@ public class Conjunto {
 						//Checa se elemento na posicao t e um subconjunto
 						if("{".equals(String.valueOf(token.charAt(p)))) {
 							//adiciona o subConjunto inteiro como um elementos
-							add = token.substring(p, token.indexOf("}")+1);
+							int chave = add.indexOf("}")+p;
+							add = token.substring(p, chave)+"}";
 							elementos.add(add);
 							//Pula o subconjunto
-							p += token.indexOf("}") - p;
+							p += add.length();
 						}
 					}
 				}
