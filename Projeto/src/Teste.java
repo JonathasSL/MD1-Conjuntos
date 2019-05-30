@@ -153,8 +153,8 @@ public class Teste {
 
 	}
 
-	//-----COMPLEMENTAR CORRIGIDA: SOMENTE FAZ A DIFERENÇA SE O conjuntoB ESTIVER CONTIDO NO conjuntoA
-	public static void complementa(Conjunto conjuntoA, Conjunto conjuntoB) {
+	//-----COMPLEMENTAR CORRIGIDA DE NOVO------------------: SOMENTE FAZ A DIFERENÇA SE O conjuntoB ESTIVER CONTIDO NO conjuntoA
+	public static Conjunto complementa(Conjunto conjuntoA, Conjunto conjuntoB) {
 		String lista0 = conjuntoA.toString().replace("{", "").replace("}", "").replace(" ", "");
 		String lista1 = conjuntoB.toString().replace("{", "").replace("}", "").replace(" ", "");
 		String[] recebe1 = lista0.split(",");
@@ -169,7 +169,7 @@ public class Teste {
 		}
 		if(cont == cont1) {
 			boolean achou;
-			ArrayList<String> lista = new ArrayList<>();
+			String lista = "{";
 			for (int i = 0; i < conjuntoA.getCardinalidade(); i ++) {
 				achou = false;
 					for (int j = 0; j < conjuntoB.getCardinalidade(); j ++) {
@@ -177,13 +177,19 @@ public class Teste {
 								achou = true;
 						}
 					if (!achou)
-						lista.add(conjuntoA.getElemento(i));				
+						lista +=  conjuntoA.getElemento(i) + ",";
 				}
+			lista += "}";
 			System.out.println(conjuntoA.toString());
 			System.out.println(conjuntoB.toString());
-			System.out.println(conjuntoA.getNome() + " - " + conjuntoB.getNome() + " = " + lista.toString());
+			System.out.println(conjuntoA.getNome() + " - " + conjuntoB.getNome() + " = " + lista);
+			String nome = "H = ";
+			nome += lista;
+			Conjunto conjuntoC = new Conjunto(nome);
+			return conjuntoC;
 			} else {
 				System.out.println(conjuntoA.getNome() + " não é complementar de " + conjuntoB.getNome() + ".");
+				return null;
 			}
 		}
 
