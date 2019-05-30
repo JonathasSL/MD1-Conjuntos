@@ -153,25 +153,39 @@ public class Teste {
 
 	}
 
-	//Função de complementar, porém o André conseguiu terminar antes de mim
-	public static void complementar(Conjunto primeiro, Conjunto segundo) {
-		String lista1 = primeiro.getElementos().toString().replace("[", "").replace("]", "");
-		String lista2 = segundo.getElementos().toString().replace("[", "").replace("]", "");
-		String[] recebe1 = lista1.split(",");
-		String[] recebe2 = lista2.split(",");
-
-		for (int i = 0; i < recebe1.length; i++) {
-			for (int j = 0; j < recebe2.length; j++) {
-				if (recebe1[i].equals(recebe2[j])) {
-					recebe1[i] = "";
+	//-----COMPLEMENTAR CORRIGIDA: SOMENTE FAZ A DIFERENÇA SE O conjuntoB ESTIVER CONTIDO NO conjuntoA
+	public static void complementa(Conjunto conjuntoA, Conjunto conjuntoB) {
+		String lista0 = conjuntoA.toString().replace("{", "").replace("}", "").replace(" ", "");
+		String lista1 = conjuntoB.toString().replace("{", "").replace("}", "").replace(" ", "");
+		String[] recebe1 = lista0.split(",");
+		String[] recebe2 = lista1.split(",");
+		int cont = recebe2.length, cont1 = 0;
+		for(String el: recebe1) {
+			for(String ele: recebe2) {
+				if(ele.equals(el)) {
+					cont1++;
 				}
 			}
 		}
-
-		for (String k : recebe1) {
-			System.out.println("RECEBE: " + k);
+		if(cont == cont1) {
+			boolean achou;
+			ArrayList<String> lista = new ArrayList<>();
+			for (int i = 0; i < conjuntoA.getCardinalidade(); i ++) {
+				achou = false;
+					for (int j = 0; j < conjuntoB.getCardinalidade(); j ++) {
+							if (conjuntoA.getElemento(i).equalsIgnoreCase(conjuntoB.getElemento(j)))
+								achou = true;
+						}
+					if (!achou)
+						lista.add(conjuntoA.getElemento(i));				
+				}
+			System.out.println(conjuntoA.toString());
+			System.out.println(conjuntoB.toString());
+			System.out.println(conjuntoA.getNome() + " - " + conjuntoB.getNome() + " = " + lista.toString());
+			} else {
+				System.out.println(conjuntoA.getNome() + " não é complementar de " + conjuntoB.getNome() + ".");
+			}
 		}
-	}
 
 	public static void relacaoDeDivisao(Conjunto primeiro, Conjunto segundo) {
 		String lista1 = primeiro.toString().replace("{", "").replace("}", "").replace(" ", "");
